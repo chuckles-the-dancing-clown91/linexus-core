@@ -1,0 +1,16 @@
+[package]
+name = "linexus-core"
+version = "0.1.0"
+edition = "2024"
+authors = ["Linexus Collective"]
+description = "Shared domain types for the Linexus ecosystem — the immutable social contract as Rust types"
+license = "MIT"
+repository = "https://github.com/chuckles-the-dancing-clown91/linexus-core"
+
+[dependencies]
+uuid = { version = "1", features = ["v4", "v7", "serde"] }
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+[dev-dependencies]
