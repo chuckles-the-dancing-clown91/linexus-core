@@ -101,14 +101,14 @@ mod tests {
     fn education_routes_to_teacher() {
         let d = DemandEvent::Education { child_id: Uuid::new_v4(), weekly_hours: 20, subject: "math".into(), demiurge_reward: 200 };
         let t = make_human(LifecyclePhase::Learning, &["math"]);
-        assert_eq!(OrchestratorEngine::route_demand(&d, &[t.clone()]).unwrap(), Some(t.node_id));
+        assert_eq!(OrchestratorEngine::route_demand(&d, std::slice::from_ref(&t)).unwrap(), Some(t.node_id));
     }
 
     #[test]
     fn maintenance_routes_to_labor() {
         let d = DemandEvent::PhysicalMaintenance { infra_id: Uuid::new_v4(), weekly_hours: 4, capability_required: "solar".into(), demiurge_reward: 40 };
         let w = make_human(LifecyclePhase::Labor, &["solar"]);
-        assert_eq!(OrchestratorEngine::route_demand(&d, &[w.clone()]).unwrap(), Some(w.node_id));
+        assert_eq!(OrchestratorEngine::route_demand(&d, std::slice::from_ref(&w)).unwrap(), Some(w.node_id));
     }
 
     #[test]
